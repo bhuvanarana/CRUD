@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+            background-image: url(https://images.alphacoders.com/781/thumb-1920-78163.jpg);
+        }
+        .container{
+           /* background-color: rgb(247, 247, 247);*/
+           border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(98, 233, 233),
+                -3px -3px 10px rgb(50, 220, 226);
+            margin: auto;
+            margin-top: 45px;
+        }
+        h1{
+            color: ivory;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        tbody tr:hover{
+            background: rgb(96, 210, 255);
+        }
+        @media only screen and (max-width:1024px){
+            thead, td, a, .editclass{
+                display: block;
+            }
+            thead, td, a, .deleteclass{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><center> <%= title %> </center></h1>
+        <a href="/add" class="btn btn-sm btn-success" style="background-color: rgb(17, 228, 243); font-weight: bold;">Add User Details</a>
+        <div class="table-responsive">
+            <table class="table  table-hover">
+                <thead style="color: ivory; font-size: 15px;">
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Phone No.</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </thead>
+                <tbody style="color: ivory; font-weight: bold;">
+                    <tr>
+                        <% users.forEach(function(user){ %>
+                            <tr>
+                                <td><%= user.firstname %></td>
+                                <td><%= user.lastname %></td>
+                                <td><%= user.phoneno %></td>
+                                <td><%= user.email %></td>
+                                <td>
+                                    <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary editclass">Edit <span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger deleteclass">Delete <span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
